@@ -1,0 +1,16 @@
+<b>Note: Only include text that is spoken. 
+This is a very rough process. 
+Often times are off if there are long pauses in the audio
+or additional words are included in the transcript field. 
+</b>
+<%= form_tag({:controller => "av", :action => "forcedalignment"}, method: :post) do %>
+    <div>
+        <%= label_tag "slug", 'File identifier:' %>
+        <%= text_field_tag :slug, params[:slug] %>
+    </div>
+    <div>
+        <%= label_tag "transcript", 'Transcript Text' %>
+        <%= text_area_tag :transcript %>
+    </div>
+    <%= submit_tag 'Upload Transcript', data: { disable_with: false } %>
+<% end %>

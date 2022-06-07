@@ -1,0 +1,46 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  inputpath: MyString
+  outputpath: MyString
+  converted: false
+  processerror: MyString
+  avtype: video
+  publiccaps: true
+  slug: test
+
+two:
+  inputpath: MyString
+  outputpath: MyString
+  converted: false
+  processerror: MyString
+  avtype: audio
+  publiccaps: false
+  slug: test2
+
+three:
+  inputpath: /vagrant/test/fixtures/files/captions/abcd
+  outputpath: /vagrant/test/fixtures/files/captions/abcd
+  converted: true
+  processerror: nil
+  avtype: video
+  publiccaps: true
+  slug: abcd
+
+four:
+  inputpath: /vagrant/test/fixtures/files/captions/efgh
+  outputpath: /vagrant/test/fixtures/files/captions/efgh
+  converted: true
+  processerror: nil
+  avtype: video
+  publiccaps: true
+  slug: efgh
+
+five:
+  inputpath: /vagrant/test/fixtures/files/captions/ua024-002-bx0113-213-001
+  outputpath: /vagrant/test/fixtures/files/captions/ua024-002-bx0113-213-001
+  converted: true
+  processerror: nil
+  avtype: video
+  publiccaps: true
+  slug: ua024-002-bx0113-213-001
+

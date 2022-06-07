@@ -1,0 +1,80 @@
+<h1>Listing AV Materials</h1>
+<table>
+<tr>
+<th></th>
+<th>Filename</th>
+<th>Converted</th>
+<th>Duration</th>
+<th>Date</th>
+<th>Edit Captions</th>
+<th>Audio</th>
+</tr>
+
+<%= form_tag av_index_path, :method => :get do %>
+<% dateto =  params[:dateto] ? params[:dateto] : Time.now.strftime("%m/%d/%Y") %>
+<% datefrom = params[:datefrom] ? params[:datefrom] : @oldestdate %>
+<div class="searchfields">
+  <div>
+  Search filename: <%= text_field_tag(:search, params[:search], :onkeydown => "if (event.keyCode == 13) {this.form.submit();}") %>
+  <%= submit_tag "Search" %>
+  </div>
+  <div>
+  Converted: <%= select_tag "converted", options_for_select([["All", ""], ["Converted", "true"], ["Failed", "false"], ["In Queue", "inqueue"], ["Converting", "converting"], ["Caption Error", "captionerror"]], params[:converted]), :onchange => "this.form.submit()" %>
+  AV Type: <%= select_tag "avtype", options_for_select([["All", ""], ["Videos", "video"], ["Audio", "audio"]], params[:avtype]), :onchange => "this.form.submit()" %>
+  Silent Materials: <%= select_tag "issilent", options_for_select([["All", ""], ["With Speech", "false"], ["Silent", "true"]], params[:issilent]), :onchange => "this.form.submit()" %>
+  Has Captions: <%= select_tag "captions", options_for_select([["All", ""], ["Has Captions", "true"], ["Does not have Captions", "false"]], params[:captions]), :onchange => "this.form.submit()" %>
+  Public Captions: <%= select_tag "publiccaps", options_for_select([["All", ""], ["Public", "true"], ["Hidden", "false"]], params[:publiccaps]), :onchange => "this.form.submit()" %>
+  Editor: <%= select_tag "vtteditors", options_for_select(@editors, params[:vtteditors]), :onchange => "this.form.submit()" %>
+  </div>
+  <div>
+  From: <input type="text" id="datepickerfrom" name="datefrom" value="<%= datefrom %>" onchange="this.form.submit()">
+  To: <input type="text" id="datepickerto" name="dateto" value="<%= dateto %>" onchange="this.form.submit()">
+  </div>
+  <div>
+  Sort: <%= select_tag "sort", options_for_select([["Filename (asc)", "inputpath_asc"], ["Filename (desc)", "inputpath_desc"], ["Converted (asc)", "converted_asc"], ["Converted (desc)", "converted_desc"], ["Date (asc)", "updated_at_asc"], ["Date (desc)", "updated_at_desc"]], @fullsort), :onchange => "this.form.submit()" %>
+  </div>
+</div>
+<% end %>
+<%= button_to 'Clear all fields', av_index_path, :method => :get %>
+
+<h2><%= page_entries_info @avmaterials %></h2>
+
+<% @avmaterials.each do |avmaterial| %>
+
+<tr>
+<td>
+  <% if avmaterial.poster %>
+  <img src="<%= avmaterial.poster['id'] %>" style="width: 100%">
+  <% end %>
+</td>
+<td>
+  <% if avmaterial.slug %>
+  <%= link_to avmaterial.slug, av_path(avmaterial) %>
+  <% end %>
+</td>
+<td>
+  <% color = avmaterial.converted == 'loaded' ? 'blue' : avmaterial.converted == 'inqueue' ? 'grey' : avmaterial.converted == 'converting' ?  'yellow' : avmaterial.converted == 'true' ? 'green' : avmaterial.converted == 'captionerror' ? 'lightgreen' : 'red' %>
+  <div class="converted" style="background: <%= color %>"></div>
+</td>
+<td>
+<% if avmaterial.duration %>
+ <%= Time.at(avmaterial.duration.to_f).utc.strftime("%H:%M:%S.%L") %>
+<% end %>
+</td>
+<td>
+  <%= avmaterial.updated_at.strftime("%I:%M %p | %B %d, %Y")  %>
+</td>
+<td>
+  <% if avmaterial.captions %>
+    <%= link_to 'Edit Captions', edit_av_path(avmaterial) %>
+  <% else %>
+    <%= link_to 'Create Captions', edit_av_path(avmaterial) %>
+  <% end %>
+</td>
+<td>
+  <%= render 'silent_icon', avmaterial: avmaterial %>
+</td>
+</tr>
+<% end %>
+</table>
+<%= paginate @avmaterials %>

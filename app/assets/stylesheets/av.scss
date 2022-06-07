@@ -1,0 +1,76 @@
+// Place all the styles related to the av controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.converted {
+  margin: auto;
+  width: 20%;
+  height:15px;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+.write-vtt {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  padding: 2px;
+  font-size: 20px;
+}
+
+.captioneditors {
+  display: inline-flex;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.captioneditors > div {
+  padding: 15px;
+  outline: 2px solid black;
+}
+
+.errormessage {
+  color: red;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+td {
+  word-break: break-all;
+}
+
+.searchfields div {
+  padding: 4px 0px 4px;
+}
+
+.avpd-button {
+  background-color: teal;
+  border: none;
+  color: #fff;
+  padding: 12px 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: auto;
+}
+
+.button_to {
+  display: inline;
+  padding: 10px;
+}

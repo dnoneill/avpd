@@ -1,0 +1,9 @@
+---
+- src: rvm.ruby
+- src: geerlingguy.mysql
+  version: 2.9.4
+- src: https://github.com/NCSU-Libraries-Ansible-Roles/ffmpeg.git
+  version: "master"
+  name: ffmpeg
+- src: https://github.com/NCSU-Libraries-Ansible-Roles/dev-db-migrate
+  name: dev-db-migrate

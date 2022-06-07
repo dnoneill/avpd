@@ -1,0 +1,99 @@
+- hosts: all
+  become: yes
+  become_user: root
+  roles:
+    - role: rvm.ruby
+      tags: ruby
+      rvm1_rubies: ['ruby-2.6.5']
+      rvm1_install_flags: '--auto-dotfiles --user-install'
+      rvm1_user: vagrant
+      rvm1_bundler_install: True
+    - role: ffmpeg
+      ansible_user: vagrant
+  tasks:
+    - name: install the 'Development tools' package group
+      yum:
+        name: "@Development tools"
+        state: present
+    - name: dependencies
+      yum:
+        name:
+          - '*'
+          - epel-release
+          - redis
+          - python
+          - python-devel
+          - python36
+          - python36-devel
+          - python36-setuptools
+          - espeak
+          - espeak-devel
+          - rubygems
+          - nodejs
+          - sqlite
+          - libtiff
+          - libtiff-devel
+          - libtiff-tools
+          - mysql-devel
+          - libvpx
+          - git
+          - curl
+          - file
+          - ImageMagick
+          - "@Development tools"
+          - sox
+        state: present
+    - name: Install audiowaveform rpm
+      get_url:
+        url: https://github.com/bbc/audiowaveform/releases/download/1.6.0/audiowaveform-1.6.0-1.el7.x86_64.rpm
+        dest: "/vagrant"
+    - name: Install audiowaveform rpm from a local file
+      yum:
+        name: /vagrant/audiowaveform-1.6.0-1.el7.x86_64.rpm
+        state: present
+    - pip:
+        executable: pip3
+        name: deepspeech
+        version: 0.7.4
+    - pip:
+        executable: pip3
+        name: aeneas
+    - name: Creates deepspeech directory
+      file:
+        path: /vagrant/deepspeech
+        state: directory
+    - name: DeepSpeech models pbmm | English
+      get_url:
+        url: https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.pbmm
+        dest: "/vagrant/deepspeech/deepspeech-models.pbmm"
+        timeout: 30
+    - name: DeepSpeech models scorer | English
+      get_url:
+        url: https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer
+        dest: "/vagrant/deepspeech/deepspeech-models.scorer"
+        timeout: 10000
+    - include_role:
+        name: geerlingguy.mysql
+      vars:
+        mysql_databases:
+          - name: avpdtranscode
+          - name: avpdtranscode_test
+    - include_role:
+        name: sphinx
+      vars:
+        outputpath: /home/vagrant
+    - name: bundle install
+      become_user: vagrant
+      shell: bash -lc "bundle install"
+      args:
+        chdir: /vagrant
+    - name: Ensure Redis is started
+      service:
+        name: redis
+        state: started
+        enabled: yes
+    - include_role:
+        name: dev-db-migrate
+      vars:
+        environments:
+          - development

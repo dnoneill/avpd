@@ -1,0 +1,3 @@
+this.player.on('timeupdate', function(){
+  console.log(this.currentTime())
+})

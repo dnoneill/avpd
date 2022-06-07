@@ -1,0 +1,93 @@
+<%= link_to root_path, :class=> "avpd-button" do %>
+    <i class="fas fa-arrow-left"></i> Back
+<% end %>
+<h2><%= @avmaterials.slug %>  <%= render 'silent_icon', avmaterial: @avmaterials %>
+<%= button_to av_reprocess_url(@avmaterials.slug), :method => :get, :class => 'avpd-button' do %>
+    <i class='fas fa-sync-alt'></i> Reprocess material
+<% end %>
+</h2>
+<% if flash[:reprocess] %><b><%= flash[:reprocess] %></b><% end %>
+<div class="captioneditors">
+    <div class="editcaptions">
+        <% if @avmaterials.captions %>
+            <%= link_to 'Edit Captions', edit_av_path(@avmaterials) %>
+        <% else %>
+            <%= link_to 'Create Captions', edit_av_path(@avmaterials) %>
+        <% end %>
+    </div>
+    <div class="uploadcaption">    
+        <div class="errormessage">
+            <% if flash[:vtterror] %><%= flash[:vtterror] %><% end %>
+        </div>
+        <%= form_tag(uploadfile_path(:extension => '.vtt'), multipart: true, method: :post) do %>
+            <%= label_tag "file", 'Upload Caption:' %>
+            <%= file_field_tag :file, required: true, accept: 'text/vtt' %>
+            <%= hidden_field_tag :slug, @avmaterials.slug %>
+            <%= submit_tag 'Upload Caption', data: { disable_with: false } %>
+        <% end %>
+    </div>
+    <div class="forcedalignment">
+        <%= link_to 'Create Captions using Transcript', forcedalignment_av_index_path(slug: @avmaterials.slug) %>
+    </div>
+</div>
+<div class="captioneditors">
+    <% if !@avmaterials.sprites.nil? %>
+        <div class="chooseposter">
+            <%= link_to 'Choose Poster', chooseposter_path(@avmaterials.slug) %>
+        </div>
+    <% end %>
+    <div class="uploadposter">
+        <div class="errormessage">
+            <% if flash[:pngerror] %><%= flash[:pngerror] %><% end %>
+        </div>
+        <%= form_tag(uploadfile_path(:extension => '.png'), multipart: true, method: :post) do %>
+            <%= label_tag "file", 'Upload Poster:' %>
+            <%= file_field_tag :file, required: true %>
+            <%= hidden_field_tag :slug, @avmaterials.slug %>
+            <%= submit_tag 'Upload Poster', data: { disable_with: false } %>
+        <% end %>
+    </div>
+    <div class="transcript">    
+        <div class="errormessage">
+            <% if flash[:pdferror] %><%= flash[:pdferror] %><% end %>
+        </div>
+        <%= form_tag(uploadfile_path(:extension => '.pdf'), multipart: true, method: :post) do %>
+            <%= label_tag "file", 'Upload PDF Transcript:' %>
+            <%= file_field_tag :file, required: true, accept: 'application/pdf' %>
+            <%= hidden_field_tag :slug, @avmaterials.slug %>
+            <%= submit_tag 'Upload Transcript', data: { disable_with: false } %>
+        <% end %>
+    </div>
+</div>
+<av-viewer avapi="/api/av/<%=@avmaterials.slug%>" startTime="<%= params[:startTime] %>" endTime="<%= params[:endTime] %>" time="<%= params[:time] %>"></av-viewer>
+<div style="white-space: pre-line">
+<b>IFrame Embed Code: </b>
+<code>&lt;iframe scr="<%= embed_url(slug: @avmaterials.slug) %>"&gt;&lt;/iframe&gt;</code>
+</div>
+<div style="white-space: pre-line">
+<b>Embed Code:</b>
+<code>&lt;script src="<%= root_url %>dist/js/avviewer.js">&lt;/script&gt;
+&lt;link href="<%= root_url %>dist/css/avviewer.css" rel="stylesheet"&gt;
+</b>&lt;av-viewer avapi="<%= av_api_url(av_id: @avmaterials.slug) %>"&gt;&lt;/av-viewer&gt;</code>
+</div>
+
+<div style="white-space: pre-line">
+<b>API url:</b>
+<%= link_to av_api_url(av_id: @avmaterials.slug), av_api_url(av_id: @avmaterials.slug) %>
+</div>
+<div style="white-space: pre-line">
+<% if @avmaterials.processerror %>
+<b>Processerror:</b> <%= @avmaterials.processerror%>
+<% end %>
+<b>Outputpath:</b> <%= @avmaterials.outputpath%>
+<b>AVType:</b> <%= @avmaterials.avtype%>
+<b>Created:</b> <%= @avmaterials.created_at %>
+<b>Last Updated:</b> <%= @avmaterials.updated_at %>
+<% if @avmaterials.captions %>
+<b>Public Captions:</b> <%= @avmaterials.publiccaps %>
+<% end %>
+<% if @avmaterials.vtteditors.present? %>
+   <b>Caption editors: </b><%= @avmaterials.vtteditors.join(", ") %>
+   <b>Caption last edited: </b> <%= @avmaterials.vttlastmodified %>
+<% end %>
+</div>

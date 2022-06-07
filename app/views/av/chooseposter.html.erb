@@ -1,0 +1,8 @@
+<% @imageareamatch.each do |image, listareas| %>
+<img src="<%=image%>" alt="<%=image%>" usemap="#<%=image%>">
+<map name="<%=image%>">
+<% listareas.each do |listarea| %>
+  <area shape="rect" coords="<%=listarea[:area]%>" href="<%= createposter_path(params[:slug], :seektime => listarea[:seektime])%>" alt="<%=listarea[:seektime]%>">
+<% end %>
+</map>
+<% end %>

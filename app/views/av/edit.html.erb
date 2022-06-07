@@ -1,0 +1,31 @@
+<h2><%= link_to @avmaterial.slug, av_path(@avmaterial) %> -- Caption edit</h2>
+<b><%= link_to "#{@avmaterial.slug} resource", av_path(@avmaterial) %></b>
+<p>
+<b>Tips for working with the editor</b>
+<ul>
+    <li>
+    To update the caption click the "Save" button. There should be an alert that says "Success. The caption was successfully sent to your API."
+    If the alert does not appear, all your changes will not be saved.
+    </li>
+    <li>
+    In order to go back to a missed section tap on the time stamp next to the text editor.
+    </li>
+    <li>
+    If there are multiple caption editors, separate caption editors with commas.
+    </li>
+    <li>
+    The application saves the date the captions were last updated.
+    </li>
+
+</ul>
+</p>
+<p style="font-weight:900">
+Caption last modified: <%= @avmaterial.vttlastmodified %><br>
+Caption Status: <%= raw @avmaterial.publiccaps ? 'Public <i class="fas fa-eye"></i>' : 'Private <i class="fas fa-eye-slash"></i>' %>
+</p>
+<% text = @avmaterial.publiccaps ? 'PRIVATE <i class="fas fa-eye-slash"></i>' : 'PUBLIC <i class="fas fa-eye"></i>' %>
+<%= button_to makepublic_av_index_path, params: {'slug': @avmaterial.slug}, class:'avpd-button' do %>
+Make caption: <%= raw text %>
+<% end %>
+<% captionurl =  @avmaterial.captions.present? ? @avmaterial.captions['id'] : '' %>
+<av-viewer avapi="/api/av/<%=@avmaterial.slug%>" type="editor" existingeditors="<%= @avmaterial.vtteditors.join(",") %>" writeapi="/av/updatevtt" captionurl="<%=captionurl%>"></av-viewer>

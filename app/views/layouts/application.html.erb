@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+    <% if params[:action] %>
+      <%= params[:controller].upcase %><% if params[:action] != 'index' %> <%= params[:action].upcase %><% end %>
+    <% else %>
+    AVPD
+    <% end %>
+    <% if params[:slug] %> - <%=params[:slug] %>
+    <% end %>
+    </title>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/dist/js/avviewer.js"></script>
+
+    <link href="/dist/css/avviewer.css" rel="stylesheet"/>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <%= render 'layouts/menu' %>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

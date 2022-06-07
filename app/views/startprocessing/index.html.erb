@@ -1,0 +1,25 @@
+<%  if local_assigns[:errors] %>
+  <p class="errors">
+  <i style='color:red' class="fas fa-exclamation-triangle"></i>
+  <%= raw local_assigns[:errors] %>
+  <i style='color:red' class="fas fa-exclamation-triangle"></i>
+  </p>
+<% end %>
+<%= form_tag({:controller => "startprocessing", :action => "start"}, method: :post) do %>
+  <div>
+    <p>
+      This path will only need to be the path after <b><%= ENV['inputpath']%></b>
+    </p>
+    <%= label_tag "inputpath", "Input path" %>
+    <%= text_field_tag "inputpath" %>
+  <div>
+    <p>
+      This is an optional field. It should only be filled out if you do not want your files going into <b><%= ENV['avoutputpath']%></b>.
+      Otherwise leave blank
+    </p>
+    <%= label_tag "outputpath", "Output path" %>
+    <%= text_field_tag "outputpath" %>
+  </div>
+  
+<%= submit_tag("Submit", :id=>"button", :name=>"submit", data: { disable_with: false })%>
+<% end %>
