@@ -18,11 +18,7 @@
     "babel-jest": "^24.9.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-<<<<<<< HEAD
-    "core-js": "^3.22.7",
-=======
     "core-js": "^3.22.8",
->>>>>>> ff3189103aaadcd835a4de98b3598458fee5bc7c
     "document-register-element": "^1.14.10",
     "fibers": "^4.0.3",
     "flush-promises": "^1.0.2",
@@ -30,15 +26,9 @@
     "lodash": "^4.17.21",
     "lunr": "^2.3.8",
     "node-notifier": "8.0.1",
-<<<<<<< HEAD
-    "node-sass": "^7.0.1",
-    "node-webvtt": "^1.9.4",
-    "sass": "^1.52.1",
-=======
     "node-sass": "^6.0.1",
     "node-webvtt": "^1.9.4",
     "sass": "^1.52.2",
->>>>>>> ff3189103aaadcd835a4de98b3598458fee5bc7c
     "sass-loader": "^8.0.2",
     "ssri": "8.0.1",
     "video.js": "^7.19.2",
