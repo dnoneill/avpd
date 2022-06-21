@@ -18,7 +18,7 @@
     "babel-jest": "^24.9.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "core-js": "^3.23.0",
+    "core-js": "^3.23.2",
     "document-register-element": "^1.14.10",
     "fibers": "^4.0.3",
     "flush-promises": "^1.0.2",
@@ -43,8 +43,8 @@
     "webpack": "^4.46"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^4.5.17",
-    "@vue/cli-service": "^4.5.17",
+    "@vue/cli-plugin-eslint": "^4.5.18",
+    "@vue/cli-service": "^4.5.18",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
