@@ -36,22 +36,22 @@
     "videojs-seek-buttons": "^1.6.0",
     "videojs-vtt-thumbnails": "0.0.13",
     "videojs-wavesurfer": "^3.8.0",
-    "vue": "^2.6.14",
+    "vue": "^2.7.2",
     "vue-custom-element": "^3.3.0",
     "vue-js-modal": "^2.0.1",
     "vue-router": "^3.5.4",
     "webpack": "^4.46"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "^4.5.18",
-    "@vue/cli-service": "^4.5.18",
+    "@vue/cli-plugin-eslint": "^4.5.19",
+    "@vue/cli-service": "^4.5.19",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^26.6.3",
     "jest-canvas-mock": "^2.4.0",
     "vue-jest": "^3.0.6",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.7.2"
   },
   "jest": {
     "moduleFileExtensions": [
