@@ -28,7 +28,7 @@
     "node-notifier": "8.0.1",
     "node-sass": "^6.0.1",
     "node-webvtt": "^1.9.4",
-    "sass": "^1.54.4",
+    "sass": "^1.54.5",
     "sass-loader": "^8.0.2",
     "ssri": "8.0.1",
     "video.js": "^7.20.2",
@@ -36,10 +36,10 @@
     "videojs-seek-buttons": "^1.6.0",
     "videojs-vtt-thumbnails": "0.0.13",
     "videojs-wavesurfer": "^3.8.0",
-    "vue": "^2.7.8",
+    "vue": "^2.7.10",
     "vue-custom-element": "^3.3.0",
     "vue-js-modal": "^2.0.1",
-    "vue-router": "^3.5.4",
+    "vue-router": "^3.6.0",
     "webpack": "^4.46"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "jest": "^26.6.3",
     "jest-canvas-mock": "^2.4.0",
     "vue-jest": "^3.0.6",
-    "vue-template-compiler": "^2.7.8"
+    "vue-template-compiler": "^2.7.10"
   },
   "jest": {
     "moduleFileExtensions": [
