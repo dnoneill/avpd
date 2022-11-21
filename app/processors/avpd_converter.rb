@@ -3,7 +3,6 @@ class AvpdConverter
   require 'etc'
   require 'fileutils'
   require 'open3'
-  require 'pocketsphinx-ruby'
   require 'streamio-ffmpeg'
   require "ibm_watson"
   require 'json'
@@ -133,7 +132,7 @@ class AvpdConverter
           tmpfile.unlink
           raise "Caption render error: #{convertstderr}"
         end
-      else
+      elsif ENV['sphinx']
         puts "pocketsphinx start"
         pocketsphinx = "pocketsphinx_continuous -infile #{tmpfile.path} -time true -remove_noise yes"
         convertstdout, convertstderr, convertstatus = Open3.capture3("#{pocketsphinx}")
@@ -144,9 +143,34 @@ class AvpdConverter
           tmpfile.unlink
           raise "Caption render error: #{convertstderr}"
         end
+      else
+        memory = { 500 => 'tiny', 1000 => 'base', 2000 => 'small', 5000 => 'medium', 10000 => 'large'}
+        puts "whisperai start"
+        compmemory, convertstderr, convertstatus = Open3.capture3("free -m | awk '/^Mem:/{printf($2)}'")
+        gettype = memory.select{|key, value|compmemory.to_i > key}.values.last;
+        whispercommand = """python3.7 << HEREDOC
+        import whisper
+        import json
+        model = whisper.load_model('#{gettype}')
+        result = model.transcribe('#{tmpfile.path}')
+        print(json.dumps(result))
+        HEREDOC""".gsub('        ', '')
+        convertstdout, convertstderr, convertstatus = Open3.capture3(whispercommand)
+        parsewhisperai(convertstdout)
+        puts 'whisperai end'
       end
       tmpfile.unlink
     end
+  end
+
+  def parsewhisperai(convertstdout)
+    alltext = []
+    resultjson = JSON.parse(convertstdout)
+    resultjson['segments'].each do |result|
+      alltext.push({'starttime': result['start'],  'endtime': result['end'], 'word': result['text'].strip})
+    end
+
+    writevttfile(alltext, 'Whisper AI')
   end
 
   def parsedeepspeech(convertstdout)

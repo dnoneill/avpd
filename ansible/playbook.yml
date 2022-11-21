@@ -58,6 +58,26 @@
     - pip:
         executable: pip3
         name: aeneas
+
+    - name: get python3.7
+      unarchive:
+        src: https://www.python.org/ftp/python/3.7.15/Python-3.7.15.tgz
+        dest: "/vagrant"
+        remote_src: yes
+    - name: configure
+      shell: |
+        cd /vagrant/Python-3.7.15
+        ./configure --enable-optimizations
+    - name: altinstall
+      shell: |
+        cd /vagrant/Python-3.7.15
+        make altinstall
+    - pip:
+        executable: /usr/local/bin/pip3.7
+        name: git+https://github.com/openai/whisper.git
+    - pip:
+        executable: /usr/local/bin/pip3.7
+        name: setuptools-rust
     - name: Creates deepspeech directory
       file:
         path: /vagrant/deepspeech
@@ -78,10 +98,6 @@
         mysql_databases:
           - name: avpdtranscode
           - name: avpdtranscode_test
-    - include_role:
-        name: sphinx
-      vars:
-        outputpath: /home/vagrant
     - name: bundle install
       become_user: vagrant
       shell: bash -lc "bundle install"
