@@ -199,8 +199,6 @@ GEM
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    pocketsphinx-ruby (0.4.0)
-      ffi (>= 1.9)
     public_suffix (4.0.6)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -355,7 +353,6 @@ DEPENDENCIES
   listen
   mini_magick
   mysql2
-  pocketsphinx-ruby
   puma
   rails (>= 6.1.5)
   rails-controller-testing

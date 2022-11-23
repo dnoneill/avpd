@@ -60,6 +60,7 @@
         name: aeneas
 
     - name: get python3.7
+      ignore_errors: True
       unarchive:
         src: https://www.python.org/ftp/python/3.7.15/Python-3.7.15.tgz
         dest: "/vagrant"

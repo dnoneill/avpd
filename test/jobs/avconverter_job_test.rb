@@ -24,7 +24,7 @@ class AvconverterJobTest < ActiveJob::TestCase
     assert_equal updatedavmaterial.poster, {"id"=>"https://cdn.pixabay.com/photo/2017/07/09/20/48/speaker-2488096_1280.png", "format"=>"image/png", "width"=>1280, "height"=>1280, "label"=>"Poster image"}
     assert_equal updatedavmaterial.avmaterial, [{"id"=>"http://localhost:3333/4507-16021-0012/4507-16021-0012.mp3", "format"=>"audio/mp3"}, {"id"=>"http://localhost:3333/4507-16021-0012/4507-16021-0012.ogg", "format"=>"audio/ogg"}]
     assert_equal updatedavmaterial.captions, {"id"=>"http://localhost:3333/4507-16021-0012/4507-16021-0012.vtt", "format"=>"text/vtt", "label"=>"Captions"}
-    assert_equal getTranscript(updatedavmaterial), "why should one called on the way [SPEECH]"
+    assert_equal getTranscript(updatedavmaterial), "Why should one halt on the way?"
     assert_nil updatedavmaterial.sprites
     assert_nil updatedavmaterial.transcript
   end

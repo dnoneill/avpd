@@ -144,7 +144,7 @@ class AvpdConverter
           raise "Caption render error: #{convertstderr}"
         end
       else
-        memory = { 500 => 'tiny', 1000 => 'base', 2000 => 'small', 5000 => 'medium', 10000 => 'large'}
+        memory = { 0 => 'tiny', 1000 => 'base', 2000 => 'small', 5000 => 'medium', 10000 => 'large'}
         puts "whisperai start"
         compmemory, convertstderr, convertstatus = Open3.capture3("free -m | awk '/^Mem:/{printf($2)}'")
         gettype = memory.select{|key, value|compmemory.to_i > key}.values.last;
