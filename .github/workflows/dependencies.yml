@@ -28,6 +28,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: rm Gemfile.lock
+        run: rm Gemfile.lock
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
