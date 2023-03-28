@@ -101,7 +101,7 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.2.2)
-    connection_pool (2.3.0)
+    connection_pool (2.4.0)
     crass (1.0.6)
     date (3.3.3)
     domain_name (0.5.20190701)
@@ -319,7 +319,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.1)
+    sqlite3 (1.6.2)
       mini_portile2 (~> 2.8.0)
     streamio-ffmpeg (3.0.2)
       multi_json (~> 1.8)
@@ -393,4 +393,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   2.4.9
+   2.4.10
