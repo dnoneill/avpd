@@ -27,7 +27,7 @@
     "lunr": "^2.3.8",
     "node-notifier": "8.0.1",
     "node-webvtt": "^1.9.4",
-    "sass": "^1.60.0",
+    "sass": "^1.61.0",
     "sass-loader": "^8.0.2",
     "video.js": "^7.21.4",
     "videojs-offset": "^2.1.3",
