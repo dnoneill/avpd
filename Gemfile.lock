@@ -212,7 +212,7 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
-    public_suffix (5.0.1)
+    public_suffix (5.0.3)
     puma (6.3.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
@@ -394,4 +394,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   2.4.16
+   2.4.17
