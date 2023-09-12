@@ -18,7 +18,7 @@
     "babel-jest": "^24.9.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "core-js": "^3.32.1",
+    "core-js": "^3.32.2",
     "document-register-element": "^1.14.10",
     "fibers": "^4.0.3",
     "flush-promises": "^1.0.2",
@@ -38,7 +38,7 @@
     "vue-custom-element": "^3.3.0",
     "vue-js-modal": "^2.0.1",
     "vue-router": "^3.6.5",
-    "webpack": "^4.46"
+    "webpack": "^4.47.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^4.5.19",
