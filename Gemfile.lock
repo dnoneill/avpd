@@ -118,7 +118,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    font-awesome-sass (6.4.2)
+    font-awesome-sass (6.5.1)
       sassc (~> 2.0)
     fugit (1.9.0)
       et-orbi (~> 1, >= 1.2.7)
@@ -175,7 +175,7 @@ GEM
       actionpack (>= 4)
       less (~> 2.6.0)
       sprockets (>= 2)
-    libv8 (3.16.14.19-x86_64-linux)
+    libv8 (3.16.14.19.1-x86_64-linux)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -209,7 +209,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.1)
+    nio4r (2.7.0)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     public_suffix (5.0.4)
@@ -264,7 +264,7 @@ GEM
     redis-namespace (1.11.0)
       redis (>= 4)
     ref (2.0.0)
-    regexp_parser (2.8.2)
+    regexp_parser (2.8.3)
     resque (2.6.0)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
