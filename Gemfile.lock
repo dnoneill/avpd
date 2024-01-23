@@ -101,7 +101,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
@@ -194,7 +194,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.1)
+    minitest (5.21.2)
     mono_logger (1.1.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
