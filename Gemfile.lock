@@ -194,7 +194,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
-    minitest (5.23.0)
+    minitest (5.23.1)
     mono_logger (1.1.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
@@ -261,7 +261,7 @@ GEM
       ffi (~> 1.0)
     redis (5.2.0)
       redis-client (>= 0.22.0)
-    redis-client (0.22.1)
+    redis-client (0.22.2)
       connection_pool
     redis-namespace (1.11.0)
       redis (>= 4)
@@ -359,7 +359,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   x86_64-linux
