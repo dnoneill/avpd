@@ -107,7 +107,7 @@ GEM
     date (3.3.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    erubi (1.12.0)
+    erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
     eventmachine (1.2.7)
@@ -191,7 +191,7 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.1.0)
-    mini_magick (4.12.0)
+    mini_magick (4.13.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.23.1)
@@ -213,7 +213,7 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
-    public_suffix (5.0.5)
+    public_suffix (5.1.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
@@ -287,7 +287,7 @@ GEM
       resque
       sass-rails
       twitter-bootstrap-rails
-    rexml (3.2.9)
+    rexml (3.3.0)
       strscan
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -359,7 +359,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   x86_64-linux
